@@ -1,4 +1,4 @@
-const Parse = require('parse');
+const Parse = require('parse/node');
 const crypto = require('crypto');
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
 
@@ -91,13 +91,14 @@ const createImageNodes = async (
 
 exports.sourceNodes = async (
   { boundActionCreators, createNodeId, store, cache },
-  { types = [], parseConfig = {}, useBucketImagesSharp },
+  { types = [], parseConfig, useBucketImagesSharp },
   callback
 ) => {
   try {
     const { appId, serverURL, jsKey } = parseConfig;
 
     if (serverURL) Parse.serverURL = serverURL;
+
     Parse.initialize(appId, jsKey);
 
     const { createNode, createParentChildLink } = boundActionCreators;
@@ -108,7 +109,7 @@ exports.sourceNodes = async (
         const { type = '', map = node => node } = entry;
         const Model = Parse.Object.extend(type);
         const query = new Parse.Query(Model);
-        const docs = await query.get();
+        const docs = await query.find();
 
         if (docs.length > 0) {
           for (let doc of docs) {
