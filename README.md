@@ -16,7 +16,7 @@ as a data source
    yarn add gatsby-source-parse
    ```
 
-2. Configure settings at `gatsby-config.js`, for example:
+2. Configure settings at `gatsby-config.js`, for example (**please note that parseConfig settings are only placeholder/dummy values**):
 
    ```js
    module.exports = {
@@ -24,14 +24,11 @@ as a data source
        {
          resolve: `gatsby-source-parse`,
          options: {
-           appConfig: {
+           parseConfig: {
              apiKey: 'api-key',
-             authDomain: 'project-id.firebaseapp.com',
-             databaseURL: 'https://project-id.firebaseio.com',
-             projectId: 'project-id',
-             storageBucket: 'project-id.appspot.com',
-             messagingSenderId: 'sender-id',
-             appID: 'app-id',
+             appId: 'my-parse-app-id',
+             jsKey: 'my-parse-app-js-key',
+             serverURL: 'https://myserveraddress.com/parse',
            },
            types: [
              {

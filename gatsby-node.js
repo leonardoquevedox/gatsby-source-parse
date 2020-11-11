@@ -91,7 +91,7 @@ const createImageNodes = async (
 
 exports.sourceNodes = async (
   { boundActionCreators, createNodeId, store, cache },
-  { types = [], parseConfig, useBucketImagesSharp },
+  { types = [], parseConfig = {}, useBucketImagesSharp },
   callback
 ) => {
   try {
