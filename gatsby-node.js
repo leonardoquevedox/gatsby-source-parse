@@ -149,7 +149,7 @@ exports.sourceNodes = async (
               values: {},
               internal: {
                 type,
-                contentDigest: getDigest(`test-${collection}-${Date.now()}`),
+                contentDigest: getDigest(`test-${type}-${Date.now()}`),
               },
             })
           );
