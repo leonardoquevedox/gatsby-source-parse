@@ -9,7 +9,7 @@ const getImageExtension = (value = '') =>
 
 const isBucketImage = (value = '') =>
   typeof value === 'string' &&
-  value.indexOf('firebasestorage') > -1 &&
+  value.indexOf('parse/files') > -1 &&
   getImageExtension(value);
 
 const getDigest = id =>
