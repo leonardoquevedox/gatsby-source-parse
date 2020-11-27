@@ -8,14 +8,12 @@ const getImageExtension = (value = '') =>
   })[0];
 
 const isBucketImage = (value = '') =>
-  typeof value === 'string' &&
-  value.indexOf('parse/files') > -1 &&
-  getImageExtension(value);
+  typeof value === 'string' && getImageExtension(value);
 
-const getDigest = id =>
+const getDigest = data =>
   crypto
     .createHash('md5')
-    .update(id)
+    .update(data)
     .digest('hex');
 
 const transformPropertyOnMatch = (source, isMatch, transform) => {
@@ -46,7 +44,7 @@ const transformPropertyOnMatch = (source, isMatch, transform) => {
 
 const createImageNodes = async (
   node,
-  { createNode, store, cache, createNodeId, createParentChildLink }
+  { createNode, store, cache, createNodeId }
 ) => {
   await transformPropertyOnMatch(
     node,
@@ -113,7 +111,7 @@ exports.sourceNodes = async (
 
         if (docs.length > 0) {
           for (let doc of docs) {
-            const contentDigest = getDigest(doc.id);
+            const contentDigest = getDigest(doc.toJSON());
             const values = { ...doc.toJSON() };
 
             const node = Object.assign(
