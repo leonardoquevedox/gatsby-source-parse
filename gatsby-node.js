@@ -13,7 +13,7 @@ const isBucketImage = (value = '') =>
 const getDigest = data =>
   crypto
     .createHash('md5')
-    .update(data)
+    .update(JSON.stringify(data))
     .digest('hex');
 
 const transformPropertyOnMatch = (source, isMatch, transform) => {

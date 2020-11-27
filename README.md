@@ -77,7 +77,7 @@ as a data source
 
 | Key                | Description                                                                                                                                  |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `appConfig`        | Firebase credentials generated on web project configuration.                                                                                 |
+| `appConfig`        | Parse credentials generated on parse server configuration.                                                                                   |
 | `types`            | Array of types, which require the following keys (`type`, `collection`, `map`)                                                               |
 | `types.type`       | The type of the collection, which will be used in GraphQL queries, e.g. when `type = Book`, the GraphQL types are named `book` and `allBook` |
 | `types.collection` | The name of the collections in Parse. **Nested collections are not tested**                                                                  |
