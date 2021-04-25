@@ -88,7 +88,7 @@ const createImageNodes = async (
 };
 
 exports.sourceNodes = async (
-  { boundActionCreators, createNodeId, store, cache },
+  { actions, createNodeId, store, cache },
   { types = [], parseConfig, useBucketImagesSharp },
   callback
 ) => {
@@ -99,7 +99,7 @@ exports.sourceNodes = async (
 
     Parse.initialize(appId, jsKey);
 
-    const { createNode, createParentChildLink } = boundActionCreators;
+    const { createNode, createParentChildLink } = actions;
 
     for (let i = 0; i < types.length; i++) {
       const entry = types[i];
